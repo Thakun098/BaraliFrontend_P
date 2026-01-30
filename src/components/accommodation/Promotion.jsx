@@ -40,7 +40,12 @@ useEffect(() => {
     try {
       setLoading(true);
       const res = await AccommodationService.getPromotion();
-      setPromotions(res?.data || []);
+      // Handle both array response and wrapped { data: [...] } response
+      const responseData = res?.data;
+      const promotionsArray = Array.isArray(responseData) 
+        ? responseData 
+        : (Array.isArray(responseData?.data) ? responseData.data : []);
+      setPromotions(promotionsArray);
     } catch (error) {
       console.error("Error fetching promotions:", error);
     } finally {

@@ -31,8 +31,6 @@ export default function SearchBar() {
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
 
-
-  const today = new Date();
   const tomorrow = dayjs().add(1, 'day').startOf('day').toDate();
 
   useEffect(() => {

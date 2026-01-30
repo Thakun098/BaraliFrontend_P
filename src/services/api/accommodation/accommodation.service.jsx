@@ -1,24 +1,20 @@
-import axios from "axios";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
+import axiosInstance from "../../axiosConfig";
 
 const getPopularRoom = () => {
-    return axios.get(`${BASE_URL}/api/accommodation/popular`);
+    return axiosInstance.get("/api/accommodation/popular");
 };
 
 const getPromotion = () => {
-    return axios.get(`${BASE_URL}/api/accommodation/promotion`);
+    return axiosInstance.get("/api/accommodation/promotion");
 };
 
 const getAll = async () => {
-    return await axios.get(`${BASE_URL}/api/accommodation`,
-        // { headers: AuthHeader() }
-    );
+    return await axiosInstance.get("/api/accommodation");
 };
 
 const getSearch = async (checkIn, checkOut, adults, children) => {
     console.log("getSearch", checkIn, checkOut, adults, children);
-    return await axios.get(`${BASE_URL}/api/accommodation/search`, {
+    return await axiosInstance.get("/api/accommodation/search", {
         params: {
             checkIn,
             checkOut,
@@ -29,7 +25,7 @@ const getSearch = async (checkIn, checkOut, adults, children) => {
 }
 
 const getAvailableRooms = (formattedCheckIn, formattedCheckOut) => {
-    return axios.get(`${BASE_URL}/api/accommodation/available`, {
+    return axiosInstance.get("/api/accommodation/promotion/availability", {
         params: {
             formattedCheckIn,
             formattedCheckOut
@@ -46,4 +42,3 @@ const AccommodationService = {
 }
 
 export default AccommodationService;
-

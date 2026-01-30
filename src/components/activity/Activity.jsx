@@ -12,7 +12,12 @@ const Activity = () => {
             try {
                 setLoading(true);
                 const res = await ActivityService.getAll();
-                setActivities(res?.data?.slice(0, 2) || []); 
+                // Handle both array response and wrapped { data: [...] } response
+                const responseData = res?.data;
+                const activitiesArray = Array.isArray(responseData) 
+                    ? responseData 
+                    : (Array.isArray(responseData?.data) ? responseData.data : []);
+                setActivities(activitiesArray.slice(0, 2)); 
             } catch (error) {
                 console.error("Error fetching activities:", error);
             } finally {

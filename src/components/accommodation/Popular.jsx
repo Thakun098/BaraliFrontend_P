@@ -31,7 +31,12 @@ const Popular = () => {
         try {
             setLoading(true);
             const res = await AccommodationService.getPopularRoom();
-            setPopulars(res?.data || []);
+            // Handle both array response and wrapped { data: [...] } response
+            const responseData = res?.data;
+            const popularsArray = Array.isArray(responseData) 
+                ? responseData 
+                : (Array.isArray(responseData?.data) ? responseData.data : []);
+            setPopulars(popularsArray);
         } catch (error) {
             console.error("Error fetching popular accommodations:", error);
         } finally {

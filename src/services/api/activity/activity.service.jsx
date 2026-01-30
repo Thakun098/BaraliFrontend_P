@@ -1,9 +1,7 @@
-import axios from "axios";
-import AuthHeader from "../../common/AuthHeader";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import axiosInstance from "../../axiosConfig";
 
 const getAll = () => {
-    return axios.get(`${BASE_URL}/api/activity`, { headers: AuthHeader() });
+    return axiosInstance.get("/api/activity");
 };
 
 const ActivityService = {

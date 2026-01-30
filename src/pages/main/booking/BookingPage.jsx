@@ -42,9 +42,6 @@ const BookingPage = () => {
   } = state || {};
 
   const payment = paymentData
-
-
-
   console.log(accommodation, checkIn, checkOut);
 
   useEffect(() => {

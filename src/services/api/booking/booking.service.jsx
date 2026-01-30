@@ -1,9 +1,7 @@
-import axios from "axios";
+import axiosInstance from "../../axiosConfig";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
-const MakeBooking = async ( userId, roomIds, checkInDate, checkOutDate, adults, children, specialRequests, totalPrice) =>{
-    return await axios.post(`${BASE_URL}/api/booking/make`,
+const MakeBooking = async (userId, roomIds, checkInDate, checkOutDate, adults, children, specialRequests, totalPrice) => {
+    return await axiosInstance.post("/api/booking/make",
         {
             userId,
             roomIds,
@@ -22,4 +20,3 @@ const BookingService = {
 };
 
 export default BookingService;
-

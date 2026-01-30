@@ -1,9 +1,8 @@
-import axios from "axios";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import axiosInstance from "../axiosConfig";
 
 const login = (email, password) => {
-    return axios
-    .post(`${BASE_URL}/api/auth/signin`, { email, password})
+    return axiosInstance
+    .post("/api/auth/signin", { email, password})
     .then(response => {
         if(response.data.accessToken) {
             localStorage.setItem("user", JSON.stringify(response.data))
