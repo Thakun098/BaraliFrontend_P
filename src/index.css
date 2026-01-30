@@ -3,8 +3,8 @@ body {
 }
 
 .faded-placeholder::placeholder {
-  color: rgba(0, 0, 0, 0.4); /* เปลี่ยนค่า 0.4 ให้อ่อน/เข้มตามต้องการ */
-  opacity: 1; /* ต้องกำหนดไว้เพื่อให้ทำงานในบาง browser */
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
 }
 
 .feature-list {
@@ -41,9 +41,3 @@ body {
   border-radius: 8px;
   padding: 6px 12px;
 }
-
-/* .price-option-card {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */

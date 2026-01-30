@@ -146,7 +146,6 @@ const BookingPage = () => {
       adults,
       children,
       specialRequest,
-      // subscribeLatestOffers,
       totalPrice,
     };
     console.log("ยืนยันการจอง:", bookingData);

@@ -9,7 +9,7 @@ const BookingList = () => {
   const [checkOut, setCheckOut] = useState("");
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
-  const [userId, setUserId] = useState(""); // สมมุติว่าได้มาจาก auth
+  const [userId, setUserId] = useState("");
   const isLoggedIn = Boolean(userId);
   const navigate = useNavigate();
   

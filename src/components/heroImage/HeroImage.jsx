@@ -11,7 +11,6 @@ const HeroImage = () => {
   };
   return (
     <div>
-      {/* Hero Carousel */}
       <div
         id="heroCarousel"
         className="carousel slide carousel-slide"
@@ -28,12 +27,10 @@ const HeroImage = () => {
             <div className="carousel-caption d-none d-md-block"></div>
           </div>
         </div>
-
-        {/* ✅ Overlay กล่อง + SearchBar */}
         <div
           style={{
             position: "absolute",
-            bottom: "25%", // ขยับจากล่างขึ้นมาเล็กน้อย
+            bottom: "25%",
             left: "50%",
             transform: "translateX(-50%)",
             zIndex: 10,
@@ -43,7 +40,6 @@ const HeroImage = () => {
             alignItems: "center",
           }}
         >
-          {/* กล่องข้อความ */}
           <div
             style={{
               width: "750px",
@@ -54,7 +50,7 @@ const HeroImage = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              marginBottom: "-40px", // ✅ ดึงให้ SearchBar ทับกล่องนิดหน่อย
+              marginBottom: "-40px",
               zIndex: 2,
               opacity: 0.9,
             }}

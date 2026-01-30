@@ -6,8 +6,6 @@ const ActivityCard = ({ activity }) => {
 
     const imageUrl = `${import.meta.env.VITE_BASE_URL}/uploads/activities/${activity.image_name}`;
     const title = activity.name || "กิจกรรม";
-    // const description = activity.description || ""; // Added description support
-
     const handleCardClick = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
 
@@ -32,7 +30,7 @@ const ActivityCard = ({ activity }) => {
                             src={imageUrl}
                             alt={title}
                             className="activity-image img-fluid w-100 h-100 object-fit-cover"
-                            loading="lazy" // Added lazy loading
+                            loading="lazy"
                         />
                         <div className="activity-overlay position-absolute w-100 h-100 d-flex align-items-end top-0 start-0">
                             <div className="overlay-content w-100 p-3 bg-dark bg-opacity-50">
@@ -42,8 +40,6 @@ const ActivityCard = ({ activity }) => {
                     </div>
                 </button>
             </div>
-
-            {/* Modal Component */}
             <Modal
                 show={showModal}
                 onHide={handleCloseModal}
@@ -51,11 +47,10 @@ const ActivityCard = ({ activity }) => {
                 size="xl"
                 dialogClassName="activity-modal"
                 aria-labelledby="activity-modal-title"
-                backdrop="static" // Added backdrop static to prevent closing when clicking outside
+                backdrop="static"
             >
                 <Modal.Body className="p-0">
                     <div className="position-relative bg-white rounded shadow overflow-hidden">
-                        {/* Close Button */}
                         <button
                             onClick={handleCloseModal}
                             className="btn btn-close position-absolute top-0 end-0 m-2 z-3 bg-white rounded-circle p-2"
@@ -65,8 +60,6 @@ const ActivityCard = ({ activity }) => {
                                 boxShadow: "0 0 5px rgba(0,0,0,0.3)"
                             }}
                         />
-
-                        {/* Image */}
                         <img
                             src={imageUrl}
                             alt={title}
@@ -77,8 +70,6 @@ const ActivityCard = ({ activity }) => {
                                 width: '100%'
                             }}
                         />
-
-                        {/* Content */}
                         <div className="p-2">
                             <h4 
                                 id="activity-modal-title" 

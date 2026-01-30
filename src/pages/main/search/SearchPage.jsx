@@ -11,8 +11,6 @@ import {
   Alert,
 } from "react-bootstrap";
 import "dayjs/locale/th";
-// import { useNavigate } from "react-router-dom";
-// import useAuth from "../../../hooks/useAuth";
 import SearchBox from "../../../layouts/common/SearchBox";
 import LoginModal from "../../main/auth/LoginModal";
 import AccommodationService from "../../../services/api/accommodation/accommodation.service";
@@ -26,31 +24,25 @@ import { Medium } from "react-bootstrap-icons";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const SearchPage = () => {
-  // const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [types, setTypes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [originalResults, setOriginalResults] = useState([]);
 
-  // const { isLoggedIn } = useAuth();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [selectedAccommodation, setSelectedAccommodation] = useState([]);
   const [expandedFacilities, setExpandedFacilities] = useState({});
 
-  // Get search parameters
   const destination = searchParams.get("destination") || "test";
   const checkIn = searchParams.get("checkIn") || "";
   const checkOut = searchParams.get("checkOut") || "";
   const adults = parseInt(searchParams.get("adults")) || 1;
   const children = parseInt(searchParams.get("children")) || 0;
 
-  // Filter states
   const [filters, setFilters] = useState({
     selectedTypes: [],
   });
-
-  // Fetch accommodation types
   useEffect(() => {
     const fetchTypes = async () => {
       try {
@@ -65,7 +57,6 @@ const SearchPage = () => {
     fetchTypes();
   }, []);
 
-  // Fetch search results
   useEffect(() => {
     document.title = `Barali Beach Resort - ค้นหาที่พัก`;
 
@@ -94,17 +85,14 @@ const SearchPage = () => {
     fetchSearchResults();
   }, [searchParams, destination, checkIn, checkOut, adults, children]);
 
-  // Apply filters to results
   const filteredResults = useMemo(() => {
     const { selectedTypes } = filters;
     const matchType = types.name?.toLowerCase();
 
     return originalResults.filter((acc) => {
-      // Filter by type
       const typeMatch =
         selectedTypes.length === 0 || selectedTypes.includes(acc.type?.name);
 
-      // Filter by search term
       const searchMatch =
         !matchType ||
         acc.type?.name?.toLowerCase().includes(matchType.toLowerCase());
@@ -113,7 +101,6 @@ const SearchPage = () => {
     });
   }, [originalResults, filters, types.name]);
 
-  // Group results by type
   const groupedResults = useMemo(() => {
     return filteredResults.reduce((groups, acc) => {
       const typeName = acc.type?.name || "Other";
@@ -125,14 +112,12 @@ const SearchPage = () => {
     }, {});
   }, [filteredResults]);
 
-  // Reset all filters
   const resetFilters = () => {
     setFilters({
       selectedTypes: [],
     });
   };
 
-  // Toggle accommodation type filter
   const handleTypeChange = (typeName) => {
     setFilters((prev) => ({
       ...prev,
@@ -142,7 +127,6 @@ const SearchPage = () => {
     }));
   };
 
-  // Calculate discounted price
   const getDiscountedPrice = (accommodation) => {
     const originalPrice = accommodation.price_per_night || 0;
     const discountPercent = accommodation.promotions[0]?.discount || 0;
@@ -194,16 +178,6 @@ const SearchPage = () => {
     }
   };
 
-  // const getUserId = () => {
-  //   const user = localStorage.getItem("user");
-  //   if (user) {
-  //     const userData = JSON.parse(user);
-  //     return userData.id;
-  //   }
-  //   return null;
-  // };
-
-  // Discounted price component
   const DiscountedPrice = ({ accommodation }) => {
     const originalPrice = parseInt(accommodation.price_per_night) || 0;
     const discountPercent =

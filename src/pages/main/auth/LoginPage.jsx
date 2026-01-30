@@ -41,21 +41,17 @@ const LoginPage = ({onLoginSuccess}) => {
       try {
         const user = await AuthService.login(email, password);
         if (user) {
-          // แสดง toast notification แทน alert
           const successToast = document.getElementById("successToast");
           if (successToast) {
             successToast.classList.add("show");
-            // ตั้งเวลาซ่อน toast หลังจาก 3 วินาที
             setTimeout(() => {
               successToast.classList.remove("show");
             }, 3000);
           }
 
-          // เรียก callback ที่ parent ส่งมา
         if (onLoginSuccess) {
     onLoginSuccess();
   } else {
-    // fallback เดิม
     setTimeout(() => {
       window.location.reload();
     }, 1500);

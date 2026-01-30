@@ -6,33 +6,22 @@ import GetRoomAvailability from "../common/GetRoomAvailability";
 import dayjs from 'dayjs';
 import 'dayjs/locale/th';
  
- 
 const Popular = () => {
     const [populars, setPopulars] = useState([]);
     const [loading, setLoading] = useState(true);
     const [availabilityData, setAvailabilityData] = useState({});
- 
-    // Fetch availability data when checkInDate or checkOutDate changes
     useEffect(() => {
         const checkInDate = dayjs().add(1, 'day').toDate();
         const checkOutDate = dayjs().add(2, 'day').toDate();
  
         const fetchData = async () => {
             if (checkInDate && checkOutDate) {
-                // console.log("📡 Fetching room availability", { checkInDate, checkOutDate });
-                // console.log("📡 Fetching room availability", { checkInDate, checkOutDate });
                 const result = await GetRoomAvailability(checkInDate, checkOutDate);
-                // console.log("✅ Availability data:", result);
-                // console.log("✅ Availability data:", result);
                 setAvailabilityData(result);
             }
         };
- 
- 
         fetchData();
     }, []);
- 
- 
     useEffect(() => {
         fetchPopularAccommodations();
     }, []);
@@ -42,7 +31,6 @@ const Popular = () => {
         try {
             setLoading(true);
             const res = await AccommodationService.getPopularRoom();
-            console.log(res);
             setPopulars(res?.data || []);
         } catch (error) {
             console.error("Error fetching popular accommodations:", error);
@@ -50,8 +38,6 @@ const Popular = () => {
             setLoading(false);
         }
     };
- 
- 
     return (
         <div className="row">
             {loading ? (

@@ -19,7 +19,6 @@ const Activity = () => {
                 setLoading(false);
             }
         };
-
         fetchActivities();
     }, []);
 

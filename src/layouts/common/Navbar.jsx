@@ -7,12 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginModal from "../../pages/main/auth/LoginModal";
 import { Icon } from "@iconify/react/dist/iconify.js";
-// import { updateAccommodation } from "../../utils/AccommodationUtils";
 
 const MainNavbar = ({ isUser, logOut }) => {
   const [selectedAccommodation, setSelectedAccommodation] = useState([]);
   const navigate = useNavigate();
-  // const paymentId = null;
 
   console.log(isUser);
 
@@ -31,10 +29,8 @@ const MainNavbar = ({ isUser, logOut }) => {
       }
     };
 
-    // โหลดครั้งแรก
     loadAccommodation();
 
-    // ฟัง custom event
     const handleAccommodationChanged = () => {
       loadAccommodation();
     };
@@ -52,7 +48,6 @@ const MainNavbar = ({ isUser, logOut }) => {
     e.preventDefault();
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    // เสร็จแล้ว navigate
     navigate("/booking-list");
 
   }

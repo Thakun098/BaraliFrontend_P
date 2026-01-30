@@ -9,7 +9,6 @@ const Footer = () => {
       }}>
       <Container>
         <Row className="align-items-center">
-          {/* ซ้าย: ข้อมูลรีสอร์ท */}
           <Col md={6} className="mb-4 mb-md-0 d-flex align-items-center gap-4">
             <img
               src="https://www.baraliresort.com/images/logo.png"
@@ -24,7 +23,6 @@ const Footer = () => {
             </div>
           </Col>
 
-          {/* ขวา: โลโก้ใบรับรอง */}
           <Col md={6} className="d-flex justify-content-md-end justify-content-center gap-4 mt-4 mt-md-0">
             <img src="/src/assets/sha-plus.png" alt="SHA Plus" height="70" />
             <img src="/src/assets/holidayCheck.png" alt="HolidayCheck Award" height="70" />

@@ -7,67 +7,52 @@ import dayjs from "dayjs";
 import "dayjs/locale/th";
 import { Icon } from "@iconify/react";
 
-
 const Promotion = () => {
   const [promotions, setPromotions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [availabilityData, setAvailabilityData] = useState({});
   const [startIndex, setStartIndex] = useState(0); // สำหรับเลื่อน
-
 useEffect(() => {
   if (promotions.length <= 3) return;
-
   const interval = setInterval(() => {
     setStartIndex((prev) =>
       prev + 1 > promotions.length - 3 ? 0 : prev + 1
     );
   }, 4000);
-
   return () => clearInterval(interval);
 }, [promotions]);
-
-
   useEffect(() => {
     const checkInDate = dayjs().add(1, "day").toDate();
     const checkOutDate = dayjs().add(2, "day").toDate();
 
     const fetchData = async () => {
             if (checkInDate && checkOutDate) {
-                // console.log("📡 Fetching room availability", { checkInDate, checkOutDate });
                 const result = await GetRoomAvailability(checkInDate, checkOutDate);
-                // console.log("✅ Availability data:", result);
                 setAvailabilityData(result);
             }
         };
- 
         fetchData();
     }, []);
-
   useEffect(() => {
     fetchPromotions();
   }, []);
-
   const fetchPromotions = async () => {
     try {
       setLoading(true);
       const res = await AccommodationService.getPromotion();
       setPromotions(res?.data || []);
-      console.log(res?.data || []);
     } catch (error) {
       console.error("Error fetching promotions:", error);
     } finally {
       setLoading(false);
     }
   };
-
   const handlePrev = () => {
     setStartIndex((prev) => Math.max(prev - 1, 0));
   };
-
   const handleNext = () => {
     setStartIndex((prev) => Math.min(prev + 1, promotions.length - 3));
   };
-
   const visiblePromotions = promotions.slice(startIndex, startIndex + 3);
 
   return (

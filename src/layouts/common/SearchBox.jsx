@@ -132,7 +132,6 @@ export default function SearchBar() {
       <div className="bg-white p-2 rounded shadow-sm">
         <Row className="align-items-end g-3">
 
-          {/* Check-in */}
           <Col md>
             <DatePicker
               selected={checkInDate}
@@ -151,7 +150,6 @@ export default function SearchBar() {
             />
           </Col>
 
-          {/* Check-out */}
           <Col md>
             <DatePicker
               selected={checkOutDate}
@@ -171,7 +169,6 @@ export default function SearchBar() {
             />
           </Col>
 
-          {/* Guests and Rooms Dropdown */}
           <Col md>
             <DropdownButton
               id="dropdown-guests"
@@ -206,7 +203,6 @@ export default function SearchBar() {
             </DropdownButton>
           </Col>
 
-          {/* Search Button */}
           <Col xs="auto">
             <Button type="submit" className="w-100 px-4 text-white" style={{ backgroundColor: '#18abdb', borderColor: '#18abdb' }}>
               {loading ? (
