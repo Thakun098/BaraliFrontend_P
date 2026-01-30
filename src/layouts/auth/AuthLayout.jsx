@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { Outlet } from "react-router-dom";
 
 const AuthLayout = () => {
-    const { isUser, logOut } = UseAuth();
+    const { isUser, logOut } = useAuth();
 
     return (
         <ProtectedRoute roles={["ROLE_MEMBER", "ROLE_ADMIN", "ROLE_MODERATOR"]}>
