@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ActivityService from "../../services/api/activity/activity.service";
-import ActivityCard from "./activityCard";
+import ActivityCard from "./ActivityCard";
 import { Spinner, Row, Col } from "react-bootstrap";
 
 const Activity = () => {

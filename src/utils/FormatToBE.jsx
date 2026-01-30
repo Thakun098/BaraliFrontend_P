@@ -2,7 +2,7 @@
 import { format } from 'date-fns';
 import { th } from 'date-fns/locale';
 
-const formatToBE = (date, noday = false, time = false) => {
+const FormatToBE = (date, noday = false, time = false) => {
     if (!date) return '';
     const dateObj = new Date(date);
 
@@ -27,4 +27,4 @@ const formatToBE = (date, noday = false, time = false) => {
     return `${datePart} ${buddhistYear}`;  // อา. 13 เม.ย. 2568
 };
 
-export default formatToBE;
+export default FormatToBE;
