@@ -18,7 +18,7 @@ const getThaiRoomTypeName = (typeName) => {
   return typeMap[typeName] || typeName;
 };
 
-const AccommodationCard = ({ accommodation, availabilityRooms, promotion }) => {
+const AccommodationCard = ({ accommodation, availabilityRooms, promotion, checkIn, checkOut, adults, children }) => {
   const navigate = useNavigate();
   const fullImageUrl = `${BASE_URL}/uploads/accommodations/${accommodation.image_name}`;
   const originalPrice = accommodation.price_per_night;
@@ -127,6 +127,10 @@ const AccommodationCard = ({ accommodation, availabilityRooms, promotion }) => {
                   navigate("/booking", {
                     state: {
                       accommodation: [accommodation],
+                      checkIn,
+                      checkOut,
+                      adults,
+                      children,
                     },
                   })
                 }

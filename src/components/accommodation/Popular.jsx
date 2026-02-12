@@ -10,6 +10,8 @@ const Popular = () => {
     const [populars, setPopulars] = useState([]);
     const [loading, setLoading] = useState(true);
     const [availabilityData, setAvailabilityData] = useState({});
+    const checkInStr = dayjs().add(1, 'day').format('YYYY-MM-DD');
+    const checkOutStr = dayjs().add(2, 'day').format('YYYY-MM-DD');
     useEffect(() => {
         const checkInDate = dayjs().add(1, 'day').toDate();
         const checkOutDate = dayjs().add(2, 'day').toDate();
@@ -57,6 +59,8 @@ const Popular = () => {
                                 key={acc.id}
                                 accommodation={acc}
                                 availabilityRooms={availabilityData[acc.type_id] ?? 0}
+                                checkIn={checkInStr}
+                                checkOut={checkOutStr}
                             />
                         ))
                     ) : (

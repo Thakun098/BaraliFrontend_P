@@ -12,6 +12,8 @@ const Promotion = () => {
   const [loading, setLoading] = useState(true);
   const [availabilityData, setAvailabilityData] = useState({});
   const [startIndex, setStartIndex] = useState(0); // สำหรับเลื่อน
+  const checkInStr = dayjs().add(1, "day").format("YYYY-MM-DD");
+  const checkOutStr = dayjs().add(2, "day").format("YYYY-MM-DD");
 useEffect(() => {
   if (promotions.length <= 3) return;
   const interval = setInterval(() => {
@@ -107,6 +109,8 @@ useEffect(() => {
                   accommodation={acc}
                   availabilityRooms={availabilityData[acc.type_id] ?? 0}
                   promotion={acc.promotions?.[0]}
+                  checkIn={checkInStr}
+                  checkOut={checkOutStr}
                 />
               </div>
             ))}

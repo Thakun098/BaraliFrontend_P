@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import AccommodationService from "../../services/api/accommodation/accommodation.service";
 import AccommodationCard from "./AccommodationCard";
 import { Spinner } from "react-bootstrap";
+import dayjs from "dayjs";
 
 const Accommodation = () => {
     const [accommodations, setAccommodations] = useState([]);
     const [loading, setLoading] = useState(true);
+    const checkInStr = dayjs().add(1, 'day').format('YYYY-MM-DD');
+    const checkOutStr = dayjs().add(2, 'day').format('YYYY-MM-DD');
 
     useEffect(() => {
         fetchAccommodations();
@@ -36,6 +39,8 @@ const Accommodation = () => {
                             <AccommodationCard
                                 key={acc.id}
                                 accommodation={acc}
+                                checkIn={checkInStr}
+                                checkOut={checkOutStr}
                             />
                         ))
                     ) : (
