@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -18,6 +19,7 @@ const getThaiRoomTypeName = (typeName) => {
 };
 
 const AccommodationCard = ({ accommodation, availabilityRooms, promotion }) => {
+  const navigate = useNavigate();
   const fullImageUrl = `${BASE_URL}/uploads/accommodations/${accommodation.image_name}`;
   const originalPrice = accommodation.price_per_night;
   const discountPercent = promotion?.discount ?? 0;
@@ -121,6 +123,13 @@ const AccommodationCard = ({ accommodation, availabilityRooms, promotion }) => {
                 size="sm"
                 className="border-0 shadow-none"
                 style={{ backgroundColor: "#00BAF2", color: "white" }}
+                onClick={() =>
+                  navigate("/booking", {
+                    state: {
+                      accommodation: [accommodation],
+                    },
+                  })
+                }
               >
                 <Icon
                   icon="mynaui:click"
